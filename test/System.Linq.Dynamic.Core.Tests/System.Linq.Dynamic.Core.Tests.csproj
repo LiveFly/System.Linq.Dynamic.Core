@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
     <PropertyGroup>
         <Authors>Stef Heyenrath</Authors>
-        <TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
+        <TargetFrameworks>net452;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
         <AssemblyName>System.Linq.Dynamic.Core.Tests</AssemblyName>
         <DebugType>full</DebugType>
         <SignAssembly>True</SignAssembly>
@@ -51,7 +51,6 @@
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
-        <!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />-->
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
@@ -62,21 +61,32 @@
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
-        <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="5.0.27" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.*" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.*" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.*" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.*" />
+        <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="5.*" />
         <PackageReference Include="NodaTime" Version="2.4.7" />
 
         <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.DynamicLinq.EFCore5\Microsoft.EntityFrameworkCore.DynamicLinq.EFCore5.csproj" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.*" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.*" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.*" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.*" />
+        <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="6.*" />
+        <PackageReference Include="NodaTime" Version="2.4.7" />
+
+        <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.DynamicLinq.EFCore6\Microsoft.EntityFrameworkCore.DynamicLinq.EFCore6.csproj" />
     </ItemGroup>
 
     <ItemGroup>
         <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
     </ItemGroup>
 
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0' ">
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net6.0'">
         <DefineConstants>$(DefineConstants);NETCOREAPP;EFCORE;EFCORE_3X;NETCOREAPP3_1</DefineConstants>
     </PropertyGroup>
 </Project>

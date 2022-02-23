@@ -10,7 +10,7 @@ namespace System.Linq.Dynamic.Core.Tests.Parser
 {
     public class TypeFinderTests
     {
-        private readonly ParsingConfig _parsingConfig = new ParsingConfig();
+        private readonly ParsingConfig _parsingConfig;
         private readonly Mock<IKeywordsHelper> _keywordsHelperMock;
         private readonly Mock<IDynamicLinkCustomTypeProvider> _dynamicTypeProviderMock;
 

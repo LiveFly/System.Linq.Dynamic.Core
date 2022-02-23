@@ -48,7 +48,7 @@ namespace System.Linq.Dynamic.Core
         {
             get
             {
-#if !( WINDOWS_APP || UAP10_0 || NETSTANDARD)
+#if !(WINDOWS_APP || UAP10_0 || NETSTANDARD)
                 // only use DefaultDynamicLinqCustomTypeProvider for full .NET Framework and NET Core App 2.x
                 return _customTypeProvider ?? (_customTypeProvider = new DefaultDynamicLinqCustomTypeProvider());
 #else
@@ -86,10 +86,7 @@ namespace System.Linq.Dynamic.Core
         /// </summary>
         public IQueryableAnalyzer QueryableAnalyzer
         {
-            get
-            {
-                return _queryableAnalyzer ?? (_queryableAnalyzer = new DefaultQueryableAnalyzer());
-            }
+            get => _queryableAnalyzer ?? (_queryableAnalyzer = new DefaultQueryableAnalyzer());
 
             set
             {

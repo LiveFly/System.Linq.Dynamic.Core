@@ -18,10 +18,10 @@ namespace System.Linq.Dynamic.Core.Tests
             // Arrange
             PopulateTestData(2, 0);
 
-            double expected = _context.Blogs.Select(b => b.BlogId).AverageAsync().GetAwaiter().GetResult();
+            var expected = _context.Blogs.Select(b => b.BlogId).AverageAsync().GetAwaiter().GetResult();
 
             // Act
-            double actual = _context.Blogs.Select("BlogId").AverageAsync().GetAwaiter().GetResult();
+            var actual = _context.Blogs.Select("BlogId").AverageAsync().GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);
